@@ -52,9 +52,21 @@ git push origin your_branch
   
 
 **Push all files on your branch**
+
+Check if there are some files that you do not want to push. 
+````
+git status
+````
+If it's alright proceed.
 ````
 git add *
-
+````
+Otherwise add only the files that you want to push.
+````
+git add file1 file2 file3
+````
+Then commit and push the changes.
+````
 git commit -m "commit"
 
 git push origin your_branch
