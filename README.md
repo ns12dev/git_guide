@@ -18,7 +18,7 @@ git clone gitbox:/.../your_project/...
 ----
 
 **Create your personal branch from intermedio**                            
-*If present otherwise create your branch and intermedio starting from master/main*
+*If exist, otherwise create your branch (and intermedio) starting from master/main*
 
   
 ````
