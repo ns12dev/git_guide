@@ -3,7 +3,7 @@
   
   
 
-## Git - No panic guide NS12 edition
+## Git - No panic guide
 
  
 **Clone repository from ssh:gitbox**                               
