@@ -5,11 +5,32 @@
 
 ## Git - No panic guide
 
- 
-**Clone repository from ssh:gitbox**                               
-*You should be assigned to the project, ask for r-w permission to your employer*
+**Introduzione**
 
-Check if you have the permission, then clone the project.
+Questa guida è pensata per agevolare la formazione delle risorse sull'utilizzo di GitHub. <br/>
+La risorsa in questione dovrà comunque affiancare questi comandi ad un corretto utilizzo della piattaforma, in particolare è fortemente consigliato
+caricare le modifiche sul proprio branch il più possibile per evitare perdite di codice accidentale (minimo un commit a giorno).
+
+**Struttura della repository**
+
+La struttura utilizzata è la seguente:
+
+*master<br/>*
+*sviluppo_intermedio<br/>*
+*sviluppo_risorsa1<br/>*
+*sviluppo_risorsa2<br/>*
+*etc...<br/>*
+
+Il branch personale deve rimanere tale, per condividere il codice con le altre risorse è presente il branch intermedio.<br/>Sul branch intermedio inoltre vanno
+caricate versioni di codice stabili, testate, funzionanti e senza conflitti.
+Sul branch master invece vanno caricate le versioni da consegnare al cliente, opportunamente testate e segnalate da un tag.
+
+----
+
+**Clonare una repository da ssh:gitbox**                               
+*Prima di clonare la repository chiedi al tuo responsabile i permessi in lettura e scrittura.*
+
+Controlla i progetti ai quali sei stato assegnato, poi clona il progetto.
 ````
 ssh gitbox
 
@@ -17,10 +38,10 @@ git clone gitbox:/.../your_project/...
 ````
 ----
 
-**Create your personal branch from intermedio**                            
-*If exist, otherwise create your branch (and intermedio) starting from master/main*
+**Crea il tuo branch personale partendo da intermedio**                            
+*Se non esiste intermedio crea sia il tuo branch che quest'ultimo a partire da master/main.*
 
-  
+
 ````
 git fetch
 
@@ -31,19 +52,19 @@ git checkout -b your_branch
 ````
 ----
 
-**Check for updates**                                               
-*NB if you have uncommitted files push on your branch or stash it*
+**Controlla se sono presenti degli aggiornamenti**                                               
+*NB se stai lavorando sul tuo branch ma vuoi comunque prendere i nuovi aggiornamenti committali oppure mettili in stash*
 
 
-Check if there are updates on intermedio.
+Controlla se ci sono aggiornamenti su intermedio.
 ````
 git fetch 
 ````
-Pull & Resolve conflicts if present.
+Pull & risolvi i conflitti se presenti.
 ````
 git pull origin sviluppo_intermedio
 ````
-Push the updates on your branch.
+Push degli aggiornamenti sul tuo branch remoto.
 ````
 git push origin your_branch
   ````
@@ -51,21 +72,21 @@ git push origin your_branch
 ----
   
 
-**Push all files on your branch**
+**Push degli aggiornamenti sul tuo branch**
 
-Check if there are some files that you do not want to push. 
+Controlla prima se sono presenti aggiornamenti che non vuoi includere nel push. 
 ````
 git status
 ````
-If it's alright proceed.
+Se vuoi aggiungere tutti i file:
 ````
 git add *
 ````
-Otherwise add only the files that you want to push.
+Altrimenti aggiungi uno ad uno i files che vuoi caricare.
 ````
 git add file1 file2 file3
 ````
-Then commit and push the changes.
+Infine esegui un commit e il push delle modifiche.
 ````
 git commit -m "commit"
 
@@ -75,7 +96,7 @@ git push origin your_branch
 ----
   
 
-**Push all files on intermediate branch**
+**Push degli aggiornamenti sul branch intermedio**
 
 ````
 git add *
@@ -84,7 +105,7 @@ git commit -m "commit"
 
 git push origin your_branch
 ````
-Check if there are some updates, in this case pull, then push and merge update on your branch resolving eventually conflicts.
+Controlla se ci sono aggiornamenti, in questo caso fai prima un pull, push  e merge sul tuo branch risolvendo i conflitti.
 ````
 git fetch
 
@@ -92,7 +113,7 @@ git pull origin intermediate_branch
 
 git push origin your_branch
 ````
-Then checkout to the intermediate branch, pull the merged updates of your branch (should be conflict-free at this point) then push on intermedio and ***back to your branch.***
+Una volta che sul tuo branch è presente una versione stabile del merge esegui un push delle modifiche prima sul tuo branch (che dovrebbe essere senza conflitti a questo punto) e poi su intermedio ***ricordati di tornare sul tuo branch!***
 ````
 git checkout intermediate_branch 
 
@@ -107,28 +128,33 @@ git checkout your_branch
 
   
 
-**Put current development on stash**  
-*Useful when you want to get new updates without push on your branch, maybe for WIP/test code*
+**Carica le modifiche in stash**  
+*Questa è una pratica molto comoda per poter mettere da parte gli sviluppi per eseguire pull oppure eseguire dei test e spostarsi su diversi branch senza eseguire un push completo*
 <br>
 ````
 git stash
 ````
  
-**Retrive file from stash**
+**Recupera le modifiche in stash**
 
-  ````
+````
   git stash apply
+````
+
+**Tag dello sviluppo**
+*Questa pratica serve a delineare un code versioning del prodotto, solitamente va taggato lo sviluppo pre-rilascio sul branch master*
+````
+git tag -a vX.Y -m "my version X.Y"
+git push origin vX.Y oppure
+git push origin --tags
 ````
 
 
   
 
-  
+## Questa sezione è puramente informativa per lo sviluppo personale non lavorativo.
 
-## The following are for personal sake/development
-
-**Git global setup**  
-*Already configured in NS12*
+**Setup globale di Git**  
 ````
 git config --global user.name "your-username"
 
@@ -140,7 +166,7 @@ git config --global user.email "your-mail@email.com"
   
 
 **Create a new repository**  
-*for personal development, in NS12 ask it to your employer.*
+*Per sviluppi personali, in azienda devi chiedere al tuo responsabile*
 <br>
 ````
 git clone https://gitlab.com/.../repo.git
@@ -161,7 +187,7 @@ git push origin main
 
   
 
-**Push an existing Git repository**
+**Carica un progetto esistente su Git**
 ````
 cd existing_repo
 
