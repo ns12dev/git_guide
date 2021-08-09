@@ -154,7 +154,7 @@ git push origin --tags
 
   
 
-## Questa sezione è puramente informativa per lo sviluppo personale non lavorativo.
+## Questa sezione è informativa per lo sviluppo personale.
 
 **Setup globale di Git**  
 ````
