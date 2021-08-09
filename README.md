@@ -145,7 +145,9 @@ git stash
 *Questa pratica serve a delineare un code versioning del prodotto, solitamente va taggato lo sviluppo pre-rilascio sul branch master*
 ````
 git tag -a vX.Y -m "my version X.Y"
+
 git push origin vX.Y oppure
+
 git push origin --tags
 ````
 
